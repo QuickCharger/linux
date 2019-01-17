@@ -1,0 +1,30 @@
+模式1 Command mode
+切换至模式2
+	i 从目前光标所在处输入
+	a 从目前光标所在的下一个字符处开始输入	A 从光标所在行的最后一个字符处开始输入
+	o 在目前光标所在的下一行处输入新的一行	O 在目前光标所在处的上一行输入新的一行
+	r 只会取代光标所在的那一个字符一次		R 一直取代光标所在的文字，直到按下 ESC 为止
+快捷键编辑
+	移动光标	gg 移动至文件第一行		G 移动至文档最后一行	nG n为数字, 移动至第n行
+	搜索		/word 搜索word 向下查找 n 继续向下查找 N继续向上查找
+	删除		x 删除当前字符		X 向前删除字符
+			dd 删除整行		ndd n为数字, 删除n行
+	复制粘贴	yy 复制该行		nyy n为数字, 复制n行
+			p 下行粘贴			P 插入式粘贴
+	撤销重做	u撤销			ctrl - r 重做
+	特殊		. 重复上一个动作
+
+模式2 Insert Mode
+
+模式3 Last line Mode
+	:w [filename]	存储文件, 若指定filename 则保存为filename
+	:r [filename]	添加filename至当前文件末尾
+	:n1,n2 w [filename]	n1 至 n2行的数据存储至filename
+	:! command	执行command. 例如 :! ls
+	:set nu 显示行号.	set nonu 不显示行号
+
+字符串替换	:n1,n2s/word1/word2/g	n1行至n2行, 将word1替换为word2
+			:%s/word1/word2/g		所有word1替换为word2
+			:%s/word1/word2/gc		所有word1替换为word2, 用户逐一确认 y或n
+
+摘抄自 http://www.runoob.com/linux/linux-vim.html
