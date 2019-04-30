@@ -16,10 +16,13 @@ RestartSec=10
 WantedBy=multi-user.target
 
 ps: 下面所有的xxx是xxx.service的缩写, systemd能自动识别
-然后执行 systemctl enable xxx
-然后就可以	systemctl start xxx
-			systemctl stop xxx
-			systemctl status xxx
+执行
+	systemctl enable xxx
+
+然后就可以
+	systemctl start xxx
+	systemctl stop xxx
+	systemctl status xxx
 
 参考链接:
 https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
