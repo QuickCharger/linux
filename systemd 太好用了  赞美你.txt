@@ -1,0 +1,25 @@
+关于守护进程的创建，依赖于systemd
+/lib/systemd/system路径下创建xxx.service文件, 内容如下
+[Unit]
+Description=My-demo Service
+
+[Service]
+Type=simple
+ExecStart=/root/test_once
+ExecReload=/root/test_once
+StandardOutput=syslog
+StandardError=inherit
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+ps: 下面所有的xxx是xxx.service的缩写, systemd能自动识别
+然后执行 systemctl enable xxx
+然后就可以	systemctl start xxx
+			systemctl stop xxx
+			systemctl status xxx
+
+参考链接:
+https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
