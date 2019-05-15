@@ -1,0 +1,71 @@
+#!/bin/bash
+# 第一行的 #! 有特殊意义, 用于指定shell
+
+# 变量
+# 定义变量时 = 左右两侧不能有空格
+# 变量名称不能使用关键字, 关键字见help
+# 显示变量名 $ ${} 均可, 意义和效果均相同, 推荐用${}
+var=123
+echo var=$var
+echo var=${var}
+
+# 变量添加只读属性
+var_readonly="this is a readonly var"
+readonly var_readonly
+echo $var_readonly
+
+# 删除变量, 不能删只读变量
+unset var
+
+
+# 字符串
+# 单引号的字符串会原样输出, 不会进行解释
+# 双引号的字符串会进行解释输出
+var=123
+str='str = ${var}'
+echo $str
+str="str = ${var}"
+echo $str
+
+# 获取字符串长度
+var='asdf'
+echo "var context ${var}. length ${#var}"
+
+
+# 反引号``
+# 反引号种的部分会被执行, 结果替换到外层的命令行文本中
+echo `ls`
+
+
+# 数组
+array_name=("name0" "name1" "name2" "name3")
+array_name[4]="name4"
+echo "array_name[4] is ${array_name[4]}"
+echo "array_name size: ${#array_name[@]}. content: ${array_name[@]}"
+
+
+# stdin
+echo "press any and enter"
+read var
+echo "get input ${var}"
+
+
+# for
+for var in item1 item2 item3 item4
+do
+	echo ${var}
+done
+
+
+# function
+# 返回是是0-255的数字
+# 读取传入参数 $1表示第一个传入参数  不是$0
+# 读取返回值通过$?
+testFunc() {
+	echo "param1 $1"
+	echo "param2 $2"
+	echo "param3 $3"
+	return 111
+}
+testFunc 1 qwe "1qwe"
+echo "call testFunc result: $?"
