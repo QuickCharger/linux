@@ -1,0 +1,13 @@
+https://blog.csdn.net/guo_lei_lamant/article/details/82994325
+
+开机进入init 3
+sudo systemctl set-default multi-user.target
+reboot
+
+
+进入图形用户界面（仅进入一次，重启系统后仍然会进入命令行模式），可执行如下命令：
+sudo systemctl start lightdm
+
+
+开机进入init 5
+sudo systemctl set-default graphical.target
