@@ -1,0 +1,32 @@
+cd /lib/systemd/system
+
+cat testtimer.service 
+------------------------------------------------
+[Unit]
+Description=test timer
+
+[Service]
+ExecStart=/root/test.sh
+
+[Install]
+WantedBy=multi-user.target
+------------------------------------------------
+
+
+cat testtimer.timer
+------------------------------------------------
+[Unit]
+Description=testtimer timer
+
+[Timer]
+OnUnitActiveSec=100s
+Unit=testtimer.service
+
+[Install]
+WantedBy=timers.target
+------------------------------------------------
+
+systemctl enable testtimer.service
+systemctl start  testtimer.service
+systemctl enable testtimer.timer
+systemctl start  testtimer.timer
