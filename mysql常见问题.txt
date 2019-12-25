@@ -1,19 +1,19 @@
-ubuntu 16.04°²×°mysql	2019Äê12ÔÂ25ÈÕÊ± °²×°µÄ°æ±¾ÊÇ5.7.28
+ubuntu 16.04å®‰è£…mysql	2019å¹´12æœˆ25æ—¥æ—¶ å®‰è£…çš„ç‰ˆæœ¬æ˜¯5.7.28
 	sudo apt-get update
 	sudo apt-get install mysql-server
 
-µÇÂ½
+ç™»é™†
 	mysql [-h127.0.0.1] [-P3306] -uroot -p123456
 
-ĞŞ¸ÄÃÜÂë
+ä¿®æ”¹å¯†ç 
 	mysqladmin -uroot -p123456 password 654321
-	123456ÃÜÂëĞŞ¸ÄÎª654321
+	123456å¯†ç ä¿®æ”¹ä¸º654321
 
-grantËµÃ÷	https://dev.mysql.com/doc/refman/5.7/en/grant.html
+grantè¯´æ˜	https://dev.mysql.com/doc/refman/5.7/en/grant.html
 	grant all on *.* to 'root'@'localhost' identified by '123456' with grant option;
-	*.*				±íÊ¾	db_name.table_name
-	root@localhost	±íÊ¾	ÓÃ»§Ãû@ip			Èç¹ûÓÃ»§Ãû²»´æÔÚÔòĞÂ½¨¸ÄÓÃ»§£¬Èç¹ûÃÜÂëºÍµ±Ç°µÄ²»Ò»ÖÂÔò¸üĞÂÃÜÂë£¡£¡£¡
-												%×÷ÎªÍ¨Åä·ûÊ¹ÓÃ
+	*.*				è¡¨ç¤º	db_name.table_name
+	root@localhost	è¡¨ç¤º	ç”¨æˆ·å@ip			å¦‚æœç”¨æˆ·åä¸å­˜åœ¨åˆ™æ–°å»ºæ”¹ç”¨æˆ·ï¼Œå¦‚æœå¯†ç å’Œå½“å‰çš„ä¸ä¸€è‡´åˆ™æ›´æ–°å¯†ç ï¼ï¼ï¼
+												%ä½œä¸ºé€šé…ç¬¦ä½¿ç”¨
 
 Your password does not satisfy the current policy requirements
 	SHOW VARIABLES LIKE 'validate_password%';
