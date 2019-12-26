@@ -15,8 +15,16 @@ grant说明	https://dev.mysql.com/doc/refman/5.7/en/grant.html
 	root@localhost	表示	用户名@ip			如果用户名不存在则新建改用户，如果密码和当前的不一致则更新密码！！！
 												%作为通配符使用
 
+mysql远程登陆配置
+	/etc/mysql/mysql.conf.d/mysqld.cnf 中注销此行"bind-address = 127.0.0.1"
+
+用户及权限表
+	select Host,User,authentication_string,password_last_changed from mysql.user;
+
 Your password does not satisfy the current policy requirements
 	SHOW VARIABLES LIKE 'validate_password%';
 	set global validate_password_policy=0;
 	set global validate_password_length=4;
 
+重启
+	service mysql restart
