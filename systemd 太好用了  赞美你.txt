@@ -2,6 +2,7 @@
 /lib/systemd/system路径下创建xxx.service文件, 内容如下
 [Unit]
 Description=My-demo Service
+After=syslog.target network.target
 
 [Service]
 Type=simple
