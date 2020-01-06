@@ -21,3 +21,13 @@ authz-db = authz
 
 alias svnstart='sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log'
 alias svnstop='sudo killall svnserve'
+
+
+hook
+vi /home/svn/repos/hook/post-commit
+#!/bin/bash
+export LANG=zh_CN.UTF-8
+echo "Code Deployed at `date "+%Y-%m-%d %H:%M"`" >> /home/qwer/svn.log
+cd /home/qwer/repos
+/usr/bin/svn up
+no need restart!!!
