@@ -1,0 +1,23 @@
+sudo apt install subversion
+sudo mkdir /home/svn
+sudo mkdir /home/svn/repos
+sudo svnadmin create /home/svn/repos
+
+sudo vi /home/svn/repos/conf/passwd
+[users]
+bdg=bdgboss12
+
+sudo vi /home/svn/repos/conf/authz
+[groups]
+admin=bdg
+[/]
+@admin=rw
+
+sudo vi /home/svn/repos/conf/svnserve.conf
+anon-access = none
+auth-access = write
+password-db = passwd
+authz-db = authz
+
+alias svnstart='sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log'
+alias svnstop='sudo killall svnserve'
