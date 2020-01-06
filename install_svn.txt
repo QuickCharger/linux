@@ -3,9 +3,11 @@ sudo mkdir /home/svn
 sudo mkdir /home/svn/repos
 sudo svnadmin create /home/svn/repos
 
+
 sudo vi /home/svn/repos/conf/passwd
 [users]
 bdg=bdgboss12
+
 
 sudo vi /home/svn/repos/conf/authz
 [groups]
@@ -13,14 +15,17 @@ admin=bdg
 [/]
 @admin=rw
 
+
 sudo vi /home/svn/repos/conf/svnserve.conf
 anon-access = none
 auth-access = write
 password-db = passwd
 authz-db = authz
 
+
 alias svnstart='sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log'
 alias svnstop='sudo killall svnserve'
+
 
 hook
 vi /home/svn/repos/hook/post-commit
@@ -35,4 +40,6 @@ su - ubuntu -c "cd /home/ubuntu; /usr/bin/svn up "
 if [ $AUTHOR = "qwer" ]; then
     su - ubuntu -c "cd /home/ubuntu/AIMS/repos/AIMS/client; npm run build:prod"
 fi
+
+chmod 775 post-commit
 no need restart!!!
