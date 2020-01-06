@@ -21,3 +21,19 @@ authz-db = authz
 
 alias svnstart='sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log'
 alias svnstop='sudo killall svnserve'
+
+
+hook
+vi /home/svn/repos/hook/post-commit
+#!/bin/sh
+REPOS="$1"
+REV="$2"
+AUTHOR="$(svnlook author $REPOS -r $REV)"
+TIME=$(date "+%Y/%m/%d - %H:%M:%S")
+echo "${TIME} ${AUTHOR}" >> /home/ubuntu/svn_update.log
+export LANG=zh_CN.UTF-8
+su - ubuntu -c "cd /home/ubuntu; /usr/bin/svn up "
+if [ $AUTHOR = "qwer" ]; then
+    su - ubuntu -c "cd /home/ubuntu/AIMS/repos/AIMS/client; npm run build:prod"
+fi
+no need restart!!!
