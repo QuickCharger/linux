@@ -22,7 +22,6 @@ authz-db = authz
 alias svnstart='sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log'
 alias svnstop='sudo killall svnserve'
 
-
 hook
 vi /home/svn/repos/hook/post-commit
 #!/bin/sh
