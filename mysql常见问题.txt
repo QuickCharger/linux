@@ -39,3 +39,20 @@ Your password does not satisfy the current policy requirements
 
 重启
 	service mysql restart
+
+
+mysql8.0
+https://blog.csdn.net/qq_42468130/article/details/88595418
+完全卸载mysql5.7
+	sudo apt autoremove --purge mysql-server
+	sudo apt remove mysql-common
+	dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P			// 选yes
+安装8.0
+	sudo apt update
+	wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
+	sudo dpkg -i mysql-apt-config_0.8.10-1_all.deb
+	sudo apt update
+	sudo apt install mysql-server
+创建用户
+create user 'username'@'localhost' identified by 'password';
+grant all privileges on *.* to 'username'@'localhost' with grant option;
