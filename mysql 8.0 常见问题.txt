@@ -1,0 +1,41 @@
+登陆
+	mysql [-h127.0.0.1] [-P3306] -uroot -p123456
+
+修改密码
+	mysqladmin -uroot -p123456 password 654321
+	123456密码修改为654321
+
+用户及权限表
+	select Host,User,authentication_string,password_last_changed from mysql.user;
+
+Your password does not satisfy the current policy requirements
+	SHOW VARIABLES LIKE 'validate_password%';
+	set global validate_password_policy=0;
+	set global validate_password_length=4;
+
+重启
+	service mysql restart
+
+
+mysql8.0
+https://blog.csdn.net/qq_42468130/article/details/88595418
+完全卸载mysql5.7
+	sudo apt autoremove --purge mysql-server
+	sudo apt remove mysql-common
+	dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P			// 选yes
+
+安装8.0
+	sudo apt update
+	wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
+	sudo dpkg -i mysql-apt-config_0.8.10-1_all.deb
+	sudo apt update
+	sudo apt install mysql-server
+
+更新key
+apt-key list
+apt-key del dsa1024
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
+
+创建用户
+create user 'username'@'localhost' identified by 'password';
+grant all privileges on *.* to 'username'@'localhost' with grant option;
