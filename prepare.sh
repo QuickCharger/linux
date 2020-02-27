@@ -59,5 +59,8 @@ fi
 if ! grep -q "mysql" .bashrc; then
     echo "alias mysql='mysql -uroot -p123456'" >> .bashrc
 fi
+if ! grep -q "dudu" .bashrc; then
+    echo "alias dudu='du -h --max-depth=1'" >> .bashrc
+fi
 
 source .bashrc
