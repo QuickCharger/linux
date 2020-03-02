@@ -12,6 +12,21 @@ function INSTALL()
     fi  
 }
 
+function AddAlias()
+{
+    fileName="bashrc_test"
+    if [ -n "$3" ];then
+        fileName=$3
+    fi
+
+    if grep -q $1 ${fileName}; then
+        echo "OK ... found alias $1 in ${fileName}\n"
+    else
+        echo "alias $1='$2'" >> ${fileName}
+        echo "OK ... add alias $1 into ${fileName} finish\n"
+    fi
+}
+
 # sudo
 if [ "$(whoami)" != "root" ]; then
     echo "please run as root"
@@ -27,18 +42,6 @@ INSTALL npm
 INSTALL subversion
 INSTALL net-tools
 
-cd /root
-
-# iftop config
-netDevice=`ls /sys/class/net | head -n1`
-echo "netDevice=${netDevice}"
-if grep -q "iftop" .bashrc; then
-    echo "OK ... found alias network in .bashrc\n"
-else
-    echo "alias network='iftop -n -i ${netDevice} -P'" >> .bashrc
-    echo "OK ... add alias network finish\n"
-fi
-
 #ssh config
 cd /etc/ssh
 if [ ! -f "sshd_config.bak" ]; then
@@ -49,18 +52,14 @@ else
 	echo "sshd has configed. do nothing"
 fi
 
+#alias
 cd /root
-if ! grep -q "svnstart" .bashrc; then
-    echo "alias svnstart='sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log'" >> .bashrc
-fi
-if ! grep -q "svnstop" .bashrc; then
-    echo "alias svnstop='sudo killall svnserve'" >> .bashrc
-fi
-if ! grep -q "mysql" .bashrc; then
-    echo "alias mysql='mysql -uroot -p123456'" >> .bashrc
-fi
-if ! grep -q "dudu" .bashrc; then
-    echo "alias dudu='du -h --max-depth=1'" >> .bashrc
-fi
+netDevice=`ls /sys/class/net | head -n1`
+echo "netDevice=${netDevice}"
+AddAlias network "iftop -n -i ${netDevice} -P" test.log
+AddAlias svnstart "sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log" test.log
+AddAlias svnstop "sudo killall svnserve" test.log
+AddAlias mysql "mysql -uroot -p123456" test.log
+AddAlias dudu "du -h --max-depth=1" test.log
 
 source .bashrc
