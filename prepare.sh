@@ -56,10 +56,10 @@ fi
 cd /root
 netDevice=`ls /sys/class/net | head -n1`
 echo "netDevice=${netDevice}"
-AddAlias network "iftop -n -i ${netDevice} -P" test.log
-AddAlias svnstart "sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log" test.log
-AddAlias svnstop "sudo killall svnserve" test.log
-AddAlias mysql "mysql -uroot -p123456" test.log
-AddAlias dudu "du -h --max-depth=1" test.log
+AddAlias network "iftop -n -i ${netDevice} -P"
+AddAlias svnstart "sudo svnserve -d -r /home/svn --log-file=/var/log/svnserve.log"
+AddAlias svnstop "sudo killall svnserve"
+AddAlias mysql "mysql -uroot -p123456"
+AddAlias dudu "du -h --max-depth=1"
 
 source .bashrc
