@@ -1,0 +1,15 @@
+sysbench fileio --file-num=10 --file-total-size=10G prepare
+
+// 随机4KB读写
+sysbench fileio --file-num=10 --file-total-size=10G --file-block-size=4096 --file-test-mode=rndrw --file-io-mode=sync --file-extra-flags=direct --time=100  --threads=16 --report-interval=10 run
+
+// 连续读
+sysbench fileio --file-num=10 --file-total-size=10G --file-block-size=16384 --file-test-mode=seqrd --file-io-mode=sync --file-extra-flags=direct --time=100  --threads=16 --report-interval=10 run
+
+// 连续写
+sysbench fileio --file-num=10 --file-total-size=10G --file-block-size=16384 --file-test-mode=seqwr --file-io-mode=sync --file-extra-flags=direct --time=100  --threads=16 --report-interval=10 run
+
+sysbench fileio --file-num=10 --file-total-size=10G cleanup
+
+// cpu基准
+sysbench --test=cpu --cpu-max-prime=10000 --num-threads=1 run
