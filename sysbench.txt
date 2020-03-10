@@ -9,6 +9,7 @@ sysbench fileio --file-num=10 --file-total-size=10G --file-block-size=16384 --fi
 // 连续写
 sysbench fileio --file-num=10 --file-total-size=10G --file-block-size=16384 --file-test-mode=seqwr --file-io-mode=sync --file-extra-flags=direct --time=100  --threads=16 --report-interval=10 run
 
+// cleanup
 sysbench fileio --file-num=10 --file-total-size=10G cleanup
 
 // cpu基准
