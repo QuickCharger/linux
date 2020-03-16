@@ -6,7 +6,7 @@ sudo svnadmin create /home/svn/repos
 
 sudo vi /home/svn/repos/conf/passwd
 [users]
-bdg=bdgboss12
+bdg=bdg
 
 
 sudo vi /home/svn/repos/conf/authz
