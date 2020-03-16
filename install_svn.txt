@@ -30,16 +30,23 @@ alias svnstop='sudo killall svnserve'
 hook
 vi /home/svn/repos/hook/post-commit
 #!/bin/sh
+SVNLOOK=/usr/bin/svnlook
+NPM=/usr/local/bin/npm
+
 REPOS="$1"
-REV="$2"
-AUTHOR="$(svnlook author $REPOS -r $REV)"
+REVERSION="$2"
+AUTHOR=`$SVNLOOK author $REPOS -r $REVERSION`
+LOG=`$SVNLOOK log $REPOS -r $REVERSION`
 TIME=$(date "+%Y/%m/%d - %H:%M:%S")
-echo "${TIME} ${AUTHOR}" >> /home/ubuntu/svn_update.log
+
+echo "${TIME} version ${REVERSION}. author ${AUTHOR}. log ${LOG}\n\n" >> /root/svn_update.log
+
 export LANG=zh_CN.UTF-8
 su - ubuntu -c "cd /home/ubuntu; /usr/bin/svn up "
 if [ $AUTHOR = "qwer" ]; then
-    su - ubuntu -c "cd /home/ubuntu/AIMS/repos/AIMS/client; npm run build:prod"
+    su - ubuntu -c "cd /home/ubuntu/client; npm run build:prod"
 fi
+
 
 chmod 775 post-commit
 no need restart!!!
