@@ -14,7 +14,7 @@ function INSTALL()
 
 function AddAlias()
 {
-    fileName="bashrc_test"
+    fileName=".bashrc"
     if [ -n "$3" ];then
         fileName=$3
     fi
