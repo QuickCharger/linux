@@ -21,7 +21,7 @@ mysql8.0
 https://blog.csdn.net/qq_42468130/article/details/88595418
 完全卸载mysql5.7
 	sudo apt autoremove --purge mysql-server
-	sudo apt remove mysql-common
+	sudo apt remove mysql-common -y
 	dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P			// 选yes
 
 安装8.0
