@@ -6,3 +6,6 @@ du
 
 	du -sh	显示当前目录下总的空间占用
 	du -sh pwd	显示pwd的空间占用 如果pwd是文件则显示pwd文件的空间 如果pwd是路径则显示pwd下所有文件的空间占用
+
+ssh-keygen				产生密钥
+ssh-copy-id user@ip		复制id到指定机器，实现免密登录
