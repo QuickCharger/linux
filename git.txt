@@ -1,0 +1,89 @@
+配置
+	git config --global user.name "name"
+	git config --global user.email "e@e.com"
+
+操作
+	git add "test.txt"		添加test.txt文件，该文件可能是新文件，也可能是修改过的文件
+		如果是修改过的文件，只会保存当前状态，如果在commit之前又有修改则不会commit最新一次修改
+		例如
+			修改test.txt
+				git add "test.txt"
+			修改test.txt
+				git commit -m "xxx"
+			结果是只提交了第一次修改结果
+	git commit -m "first commit"
+
+	git status			显示文件的当前不同
+	git diff test.txt	查看某一文件修改
+
+	git log				查看历史记录
+
+	git reset --hard HEAD^		回退至上一版本 HEAD表示当前版本， HEAD^表示上一个， HEAD^^表示上上个
+	git reset --hard 版本号		更新或回退至指定版本。 版本号可用前几位 只要和其他版本号不冲突
+
+撤销
+	git checkout -- test.txt	没add并且没commit前有效
+	git reset HEAD test.txt		只add并且没commit前有效
+
+删除
+	git rm test.txt
+
+
+ssh
+	ssh-keygen -t rsa -C "e@e.com"	一路回车，id_rsa是私钥，id_rsa是公钥
+
+clone
+	git clone git@gitee.com:repo/testGit2.git
+增加、删除 远程服务器
+	git remote add origin git@gitee.com:repo/testGit2.git
+	git remote -v
+	git remote remove origin
+提交远程服务器
+	git push origin <branch-name>		-u后面的名字要和上面add后面的名字一致
+更新
+	git pull
+
+
+分支
+	创建
+		git checkout -b dev		创建dev分支并切换至dev
+			相当于执行了两条命令：
+				git brance dev
+				git checkout dev
+	查看
+		git branch
+	切换
+		git checkout master/dev
+	合并
+		git merge dev			合并dev至当前分支
+	删除
+		git branch -d dev		删除dev分支
+
+
+储藏工作区
+	git stash		未添加至git的文件不能被储藏
+恢复储藏
+	git stash pop	等于执行了git stash apply 和 git stash drop
+显示储藏
+	git stash list
+恢复储藏
+	git stash apply
+	或 git stash apply stash@{n}	恢复至指定储藏
+删除储藏
+	git stash drop
+
+git config --list
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+
+
+git commit：是将本地修改过的文件提交到本地库中；
+git push：是将本地库中的最新信息发送给远程库；
+git pull：是从远程获取最新版本到本地，并自动merge；
+git fetch：是从远程获取最新版本到本地，不会自动merge；
+git merge：是用于从指定的commit(s)合并到当前分支，用来合并两个分支；
+git pull: 相当于 git fetch + git merge
