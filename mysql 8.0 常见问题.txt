@@ -39,3 +39,5 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
 创建用户
 create user 'username'@'localhost' identified by 'password';
 grant all privileges on *.* to 'username'@'localhost' with grant option;
+ALTER USER 'username'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+flush privileges
