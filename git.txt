@@ -91,5 +91,6 @@ git pull: 相当于 git fetch + git merge
 win下的 Git + tortoiseGit 密钥配置
 "C:\Program Files\Git\usr\bin\ssh-keygen" -t rsa -C "your_email@example.com"
 将生成的文件直接复制到C:\Users\username\.ssh\下
+"C:\Program Files\TortoiseGit\bin\puttygen.exe" 将密钥转为ppk
 公钥复制进github
-提交的时候可能需要导入key 方法是运行 C:\Program Files\TortoiseGit\bin\pageant.exe 导入私钥
+提交的时候可能需要导入key 方法是运行 C:\Program Files\TortoiseGit\bin\pageant.exe 导入私钥ppk文件
