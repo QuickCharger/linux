@@ -50,6 +50,7 @@ clone
 			相当于执行了两条命令：
 				git brance dev
 				git checkout dev
+		git checkout -b develop origin/develop	从远程仓库拉取指定分值到本地
 	查看
 		git branch
 	切换
