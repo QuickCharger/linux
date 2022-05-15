@@ -1,0 +1,41 @@
+db	当前数据库的别名
+show databases	显示所有数据的列表
+
+链接数据库
+mongo mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+mongo mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+mongo mongodb://localhost
+
+--------------------------------------------------------------
+创建库
+use local	切换到local库，如果库不存在 则创建该库
+删除库
+db.dropDatabase()
+
+创建表
+db.createCollection("tbName")
+删除表
+db.tbName.drop()
+
+--------------------------------------------------------------
+
+写
+db.tbName.insert({"name":"this is a name column"})
+db.tbName.insert({"name":"this is a name column2", "name2":"name2 column"})
+
+删
+db.tbName.remove({"name":"this is a name column"})
+db.tbName.remove({})		// 删除所有 类似于mysql中的truncate
+
+更新
+db.tbName.update({"title":'MongoDB 教程'},{$set:{'title':'MongoDB'}})
+
+查询
+db.tbName.find().pretty()	// 类似于mysql中 \G
+
+
+--------------------------------------------------------------
+
+添加用户
+use admin
+db.createUser({user:'root', pwd:'123456',roles:[{role:'root',db:'admin'}]})
