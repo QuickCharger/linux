@@ -1,2 +1,0 @@
-查看证书
-certbot certificates
