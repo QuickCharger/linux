@@ -1,0 +1,24 @@
+ubuntu 18.04 测试ok
+apt install samba samba-common
+
+创建合适目录 假定/home/abc/share
+chmod 777 /home/abc/share -R
+smbpasswd -a abc
+
+echo '''
+[abc_share]
+comment = share folder
+path = /home/abc/share
+create mask = 0700
+directory mask = 0700
+valid users = abc
+force user = abc
+force group = abc
+public = no
+available = yes
+writable = yes
+''' >> /etc/samba/smb.conf
+win下访问地址 \\1.2.3.4\abc_share
+
+alias smbstart='service smbd start'
+alias smbstop='service smbd stop'
