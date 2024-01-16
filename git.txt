@@ -95,3 +95,16 @@ win下的 Git + tortoiseGit 密钥配置
 "C:\Program Files\TortoiseGit\bin\puttygen.exe" 将密钥转为ppk
 公钥复制进github
 提交的时候可能需要导入key 方法是运行 C:\Program Files\TortoiseGit\bin\pageant.exe 导入私钥ppk文件
+
+
+代码提交不上去
+  使用git原生的git-bash操作 先判断是哪的问题
+    如果是ssh 22 则进行如下操作
+      ~/.ssh/config 中添加如下 config需要新创建否则可能会有权限问题
+Host github.com
+	Hostname ssh.github.com
+	Port 443
+      然后再测试看输出结果 ssh -T -p 443 git@ssh.github.com
+    如果是其他问题 修改~/.gitconfig中添加如下
+[http]
+	proxy = socks5://127.0.0.1:1080
