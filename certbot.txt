@@ -1,0 +1,6 @@
+申请泛证书的步骤
+第一步 certbot certonly --manual --preferred-challenges dns -d vip99.website -d *.vip99.website
+第二步 然后在域名服务商中添加二级域名 类型txt _acme-challenge.vip99.website  值填写刚才显示出的内容
+第三步 继续第一步 等待一段时间后(如果拿不准时间 可以访问第一步的提示 类似https://toolbox.googleapps.com/apps/dig/#TXT/_acme-challenge.vip99.website 这个网站 如果返回正确的值 表示可以回车了) 回车
+需要手动更新 手动更新 手动更新
+手动更新 只需要再次执行上面的命令即可  需要重新写txt
