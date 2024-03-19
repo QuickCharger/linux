@@ -1,0 +1,24 @@
+ubuntu 18.04
+
+安装
+curl -fsSL https://test.docker.com -o test-docker.sh
+sudo sh test-docker.sh
+
+下面的CID是 CONTAINER ID的简称 用docker ps获取
+
+常用命令
+docker search redis
+docker pull redis:latest
+docker images
+docker ps -a   -a会显示stop的容器
+docker stop/start CID
+docker pause/unpause CID
+docker rm CID    -f强制删除运行中的容器 慎用
+
+启动服务
+-i --interactive 创建一个交互式的会话
+-t --tty 分配一个伪终端(TTY)设备
+-d --detach 在后台（守护进程）模式下运行容器
+docker run -itd --name redis-test -p 6379:6379 redis
+docker exec -it CID redis-cli
+
