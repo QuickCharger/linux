@@ -22,3 +22,5 @@ docker rm CID    -f强制删除运行中的容器 慎用
 docker run -itd --name redis-test -p 6379:6379 redis
 docker exec -it CID redis-cli
 
+docker run -itd ubuntu:22.04
+docker exec -it CID /bin/bash
