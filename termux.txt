@@ -9,7 +9,8 @@ termux 操作
 apt update
 apt install -y openssl openssh curl lrzsz
 sshd	默认端口8022
-termux-change-repo
+termux-change-repo	修改源
+termux-setup-storage	拿到存储权限后会在 home目录生成 storage 目录，并且生成若干目录，软连接都指向外置存储卡的相应目录应目录
 
 ubuntu 方法1
 ubuntu文件夹复制好后 执行
