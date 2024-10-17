@@ -1,0 +1,23 @@
+安装termux遇到的常见问题
+先配置ternux
+ubuntu 安装分2种
+  1. 直接通过现有ubuntu压缩包+proot
+  2. proot-distro安装ubuntu
+建议通过第一种 如此可以做到随时移植并且镜像备份
+
+termux 操作
+apt update
+apt install -y openssl openssh curl lrzsz
+sshd	默认端口8022
+termux-change-repo
+
+ubuntu 方法1
+ubuntu文件夹复制好后 执行
+/data/data/com.termux/files/home/Termux-Linux/Ubuntu/start-ubuntu.sh
+
+proot 操作
+apt install -y proot-distro
+pkg install -y openssl1.1-tool
+proot-distro list
+proot-distro install ubuntu
+proot-distro login ubuntu
