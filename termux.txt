@@ -4,6 +4,7 @@ ubuntu 安装分2种
   1. 直接通过现有ubuntu压缩包+proot
   2. proot-distro安装ubuntu
 建议通过第一种 如此可以做到随时移植并且镜像备份
+第二种能安装新版本的ubuntu
 
 termux 操作
 apt update
@@ -13,10 +14,12 @@ termux-change-repo	修改源
 termux-setup-storage	拿到存储权限后会在 home目录生成 storage 目录，并且生成若干目录，软连接都指向外置存储卡的相应目录应目录
 
 ubuntu 方法1
-ubuntu文件夹复制好后 执行
-/data/data/com.termux/files/home/Termux-Linux/Ubuntu/start-ubuntu.sh
+通过termux-install-linux-master安装ubuntu
+或
+直接复制已经安装好的ubuntu文件夹  /dev 不用复制
+执行/data/data/com.termux/files/home/Termux-Linux/Ubuntu/start-ubuntu.sh
 
-proot 操作
+ubuntu 方法2
 apt install -y proot-distro
 pkg install -y openssl1.1-tool
 proot-distro list
