@@ -10,8 +10,8 @@ termux 操作
 apt update
 apt install -y openssl openssh curl lrzsz
 sshd	默认端口8022
-termux-change-repo	修改源
-termux-setup-storage	拿到存储权限后会在 home目录生成 storage 目录，并且生成若干目录，软连接都指向外置存储卡的相应目录应目录
+termux-change-repo	修改源 可能不需要
+termux-setup-storage	拿到存储权限后会在 home目录生成 storage 目录，并且生成若干目录，软连接都指向外置存储卡的相应目录应目录 需要root
 
 ubuntu 方法1
 通过termux-install-linux-master安装ubuntu
@@ -25,3 +25,7 @@ pkg install -y openssl1.1-tool
 proot-distro list
 proot-distro install ubuntu
 proot-distro login ubuntu
+
+android文件夹映射到ubuntu方法 需要root
+termux-setup-storage 只能将文件夹映射到termux。 再添加 "-b /data/data/com.termux/files/home/storage:/root/android_storage" 也只能将storage映射进ubuntu的/root/android_storage中，但里面的链接依旧映射不过去。 所以只能直接将安卓文件夹映射到ubuntu中
+command+=" -b /storage/emulated/0/Download:/root/android_download"
